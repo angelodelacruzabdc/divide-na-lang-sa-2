@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Days+One" rel="stylesheet">
+		<style>
+			body{
+				background-color: #22262a;
+			}
+			#box{
+				width: 500px;
+				height: 700px;
+				margin: auto;
+				margin-top: 2%;
+				background-color: #2a282a;
+				position: relative;
+				overflow: hidden;
+			}
+			#box1{
+				float: left;
+				width: 600px;
+				height: 800px;
+				margin: auto;
+				background-color: black;
+				position: relative;
+				overflow: hidden;
+				z-index: 3;
+			}
+			#box2{
+				float: left;
+				width: 600px;
+				height: 450px;
+				margin: auto;
+				background-color: black;
+				position: absolute;
+				overflow: hidden;
+				z-index: 3;
+				color: white;
+			}
+			#box3{
+				float: left;
+				width: 600px;
+				height: 450px;
+				margin: auto;
+				background-color: black;
+				position: absolute;
+				overflow: hidden;
+				z-index: 2;
+				color: white;
+			}
+			#box4{
+				float: left;
+				width: 600px;
+				height: 450px;
+				margin: auto;
+				background-color: black;
+				position: absolute;
+				overflow: hidden;
+				z-index: 1;
+				color: white;
+			}
+			#small{
+				position: absolute;
+				width: 60px;
+				height: 80px;
+				top: 600px;
+				left: 220px;
+				background-image: url("red.png");
+			}
+			#car1, #car2, #car3, #car4, #car5{
+				position: absolute;
+				width: 60px;
+				height: 80px;
+				background-image: url("car2.png");
+				z-index: -1;
+			}
+			#line1, #line2, #line3{
+				position: absolute;
+				width: 20px;
+				height: 150px;
+				background-color: #959495;
+				left: 240px;
+				top: -150px;
+			}
+			#scoreboard{
+				position: absolute;
+				color: white;
+				font-family: 'Ubuntu Condensed', sans-serif;
+				font-size: 25px;
+				margin-left: 15px;
+				margin-top: 10px;
+				z-index: 2;
+			}
+			#trafficlogo{
+				width: 400px;
+				height: 200px;
+				background-image: url("trafficracerlogo.png");
+				margin-left: 50px;
+				margin-top: 50px;
+			}
+			#box2form{
+				margin-top: 80px;
+			}
+			#box2form input{
+				font-family: 'Days One', sans-serif;
+				color: white;
+				background-color: transparent;
+				border: none;
+				border-radius: 15px;
+				font-size: 30px;
+				margin-top: 30px;
+				margin-left: 150px;
+				width: 220px;
+				text-align: center;
+				transition: 0.3s;
+			}
+			#box2form input:hover {
+				background-color: white;
+				color: black;
+			}
+			#cars{
+				margin-top: 30px;
+				float: left;
+				margin-left: 10px;
+			}
+			#box3form{
+				font-family: 'Days One', sans-serif;
+				margin-left: 70px;
+				margin-top: 50px;
+			}
+			#box3form input{
+				margin-top: 20px;
+			}
+			#box3form label{
+				font-size: 20px;
+			}
+			#return{
+				float: left;
+				clear: left;
+				background-color: transparent;
+				border: none;
+				border-radius: 15px;
+				font-size: 30px;
+				color: white;
+				font-family: 'Days One', sans-serif;
+				width: 190px;
+				text-align: center;
+				transition: 0.3s;
+				margin-top: 20px;
+				margin-left: 90px;
+			}
+			#return:hover {
+				background-color: white;
+				color: black;
+			}
+			#box4 h2{	
+				font-size: 25px;
+				margin-top: 80px;
+				margin-left: 150px;
+				font-family: 'Days One', sans-serif;
+			}
+			#box4 p{	
+				font-size: 15px;
+				margin-top: 40px;
+				margin-left: 40px;
+				text-align: justify;
+				width: 70%;
+				height: 15%;
+				font-family: 'Days One', sans-serif;
+			}
+			#box4form{
+				margin-top: 80px;
+			}
+			#box4form input{
+				font-family: 'Days One', sans-serif;
+				color: white;
+				background-color: transparent;
+				border: none;
+				border-radius: 15px;
+				font-size: 30px;
+				margin-left: 160px;
+				width: 190px;
+				text-align: center;
+				transition: 0.3s;
+			}
+			#gameoverbox{
+				position: absolute;
+				color: white;
+				font-family: 'Ubuntu Condensed', sans-serif;
+				font-size: 25px;
+				margin-left: 75px;
+				margin-top: 150px;
+				width: 350px;
+				height: 360px;
+				background-color: black;
+				z-index: -2;
+			}
+			#gameovertext {
+				font-family: 'Source Code Pro', monospace;
+				margin-left: 60px;
+				position: relative;
+				text-transform: uppercase;
+				letter-spacing: 6px;
+				font-size: 35px;
+				font-weight: 900;
+				text-decoration: none;
+				color: white;
+				display: inline-block;
+				background-size: 120% 100%;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				text-fill-color: transparent;
+				background-image: linear-gradient(45deg,white,white,red,red);
+				animation: .8s shake infinite alternate;
+			}
+			@keyframes shake {
+				0% { transform: skewX(-15deg); }
+				5% { transform: skewX(15deg); }
+				10% { transform: skewX(-15deg); }
+				15% { transform: skewX(15deg); }
+				20% { transform: skewX(0deg); }
+				100% { transform: skewX(0deg); }  
+			}
+			#scoretext{
+				position: absolute;
+				color: white;
+				font-family: 'Ubuntu Condensed', sans-serif;
+				font-size: 25px;
+				margin-left: 20px;
+				margin-top: 0px;
+			}
+			#gameoverform input{
+				position: relative;
+				margin-left: 110px;
+				margin-top: 20px;
+				font-family: 'Days One', sans-serif;
+				color: white;
+				background-color: transparent;
+				border: none;
+				border-radius: 15px;
+				font-size: 20px;
+				width: 140px;
+				text-align: center;
+				transition: 0.3s;
+			}
+			#gameoverform input:hover {
+				background-color: white;
+				color: black;
+			}
+			.navbut {
+				font: 1em DIN Next W01 Regular,Trebuchet MS,Helvetica,Arial,sans-serif;
+				display: inline-block;
+				padding: 1em;
+				margin: 1em;
+				text-decoration: none;
+				color: #f8fbfa;
+				background-image: linear-gradient(#f43f3f, #f43f3f), linear-gradient(transparent, transparent);
+				background-size: 0 5px, auto;
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				transition: all .2s ease-out;
+			}
+			.navbut:hover {
+				background-size: 100% 5px, auto;
+			}
+			nav{
+				margin: auto;
+				background-color: #22262a;
+				height: 64px;
+				width: 90%;
+				border-bottom: 2px solid white;
+			}
+			#bodycontainer{
+				margin: auto;
+				background-color: #212934;
+				width: 90%;
+				height: 820px;
+			}
+			footer{
+				margin: auto;
+				background-color: #22262a;
+				height: 64px;
+				width: 90%;
+				border-top: 2px solid white;
+			}
+			#boxback{
+				margin: auto;
+				width: 500px;
+				border: 15px solid white;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="../Homepage/homepage.html" class="navbut">Home</a>
+				<a href="../Game/trafficracer.html" class="navbut">Game</a>
+				<a href="../Quiz/quiz.html" class="navbut">Quiz</a>
+				<a href="../Survey/CsSurviy.html" class="navbut">Survey</a>
+				<a href="../About Us/aboutus.html" class="navbut">About Us</a>
+			</nav>
+		</header>
+		<div id="bodycontainer">
+			<br>
+			<div id="boxback">
+				<div id="box" onmousemove="showCoords(event)">
+					<div id="box1">
+						<div id="trafficlogo"></div>
+						<div id="box2">
+							<form id="box2form">
+								<input type="button" value="Play Game"  onclick="startgame(1)">
+								<br>
+								<input type="button" value="How To Play" onclick="howtoplay()">
+								<br>
+								<input type="button" value="Options" onclick="options()">
+								<br>
+								<a href="../Homepage/homepage.html">
+									<input type="button" value="Quit">
+								</a>
+							</form>
+						</div>
+						<div id="box3">
+							<form id="box3form">
+								<label>Player Name:</label>
+								<input id="playername" type="text" placeholder="Player Name" onchange="playaname()">
+								<br>
+								<label>Number of Enemy Cars:</label>
+								<input id="carno" type="number" min="1" max="5" value="3" onblur="carnumber()">
+								<br>
+								<label>Border:</label>
+								<select id="borde" style="margin-top: 20px;" onchange="borders()">
+									<option value="off">OFF</option>
+									<option value="on">ON</option>
+								<select>
+								<br>
+								<label style="margin-top: 10px; float: left; clear: left;">Select Car Design:</label>
+								<br>
+								<div id="cars" style=" clear:left;">
+									<img src="red.png">
+									<br>
+									<input id="redcar" type="radio" checked name="carselect" style="margin-left: 23px;" onclick="redchar()">
+								</div>
+								<div id="cars">
+									<img src="white.png">
+									<br>
+									<input id="whitecar" type="radio" name="carselect" style="margin-left: 23px;" onclick="whitechar()">
+								</div>
+								<div id="cars">
+									<img src="gray.png">
+									<br>
+									<input id="graycar" type="radio" name="carselect" style="margin-left: 23px;" onclick="graychar()">
+								</div>
+								<div id="cars">
+									<img src="orange.png">
+									<br>
+									<input id="orangecar" type="radio" name="carselect" style="margin-left: 23px;" onclick="orangechar()">
+								</div>
+								<div id="cars">
+									<img src="black.png">
+									<br>
+									<input id="blackcar" type="radio" name="carselect" style="margin-left: 23px;" onclick="blackchar()">
+								</div>
+								<br>
+								<input id="return" type="button" value="Return" onclick="returntomenu()">
+							</form>
+						</div>
+						<div id="box4">
+							<h2>HOW TO PLAY</h2>
+							<p>Control your car by hovering the mouse over the game area. Avoid other cars and stay alive for as long as you can. 
+							Every car that passes the bottom gives you a score. The longer you survive, the larger the score, but beware, the game gets faster.
+							How long can you survive?
+							</p>
+							<form id="box4form">
+								<input id="return" type="button" value="Return" onclick="returntomenu2()">
+							</form>
+						</div>
+					</div>
+					<div id="line1"></div>
+					<div id="line2"></div>
+					<div id="line3"></div>
+					<div id="small"></div>
+					<div id="car1"></div>
+					<div id="car2"></div>
+					<div id="car3"></div>
+					<div id="car4"></div>
+					<div id="car5"></div>
+					<p id="scoreboard">Score: 0</p>
+					<div id="gameoverbox">
+						<h1 id="gameovertext">GAME OVER</h1>
+						<p id="scoretext">Player Name Score: 0</p>
+						<p style="margin-left: 20px; margin-top: 60px;">Highscore:</p>
+						<p id="highscores" style="margin-left: 20px; margin-top: -20px;">Player Name: 0</p>
+						<form id="gameoverform">
+							<input type="button" value="Play Again" onclick="startgame(1)">
+							<br>
+							<input type="button" value="Main Menu" onclick="mainmenu()">
+							<br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		var b = document.getElementById("box");
+		var s = document.getElementById("small");
+		var layn1 = document.getElementById("line1");
+		var layn2 = document.getElementById("line2");
+		var layn3 = document.getElementById("line3");
+		var carr1 = document.getElementById("car1");
+		var carr2 = document.getElementById("car2");
+		var carr3 = document.getElementById("car3");
+		var carr4 = document.getElementById("car4");
+		var carr5 = document.getElementById("car5");
+		var carr=[0, carr1, carr2, carr3, carr4, carr5];
+		var layn=[0, layn1, layn2, layn3];
+		var carnum=Number(document.getElementById("carno").value);
+		var charname=document.getElementById("playername").value;
+		var comparex=0;
+		var comparey=0;
+		var startclick=0;
+		var score=0;
+		var interv=1;
+		var id = setInterval(frame, interv);
+		var layny=[];
+		var cary=[];
+		var randomnum=[];
+		var numy=1.5;
+		var gameover=0;
+		var highscore=[0,""];
+		function startgame(game){
+			startclick=game;
+			comparex=220;
+			comparey=600;
+			score=0;
+			layny=[0,-150,150,450];
+			cary=[0,-100,-250,-380,-530,-660];
+			randomnum=[0];
+			numy=1.5;
+			gameover=0;
+			s.style.top=600+"px";
+			s.style.left=220+"px";
+			document.getElementById("scoreboard").innerHTML="Score: "+score; 
+			document.getElementById("box1").style.zIndex="-1";
+			for(ctr=1;ctr<=carnum;ctr++){
+				randomnum[ctr]=(Math.floor(Math.random() * (b.clientWidth-carr1.clientWidth)) + 1);
+				carr[ctr].style.left=randomnum[ctr]+"px";
+			}
+		}
+		function returntomenu(){
+			document.getElementById("box3").style.zIndex="2";
+			document.getElementById("box2").style.zIndex="3";
+		}
+		function returntomenu2(){
+			document.getElementById("box4").style.zIndex="2";
+			document.getElementById("box2").style.zIndex="3";
+		}
+		function howtoplay(){
+			document.getElementById("box4").style.zIndex="3";
+			document.getElementById("box2").style.zIndex="2";
+		}
+		function options(){
+			document.getElementById("box3").style.zIndex="3";
+			document.getElementById("box2").style.zIndex="2";
+		}
+		function carnumber(){
+			carnum=Number(document.getElementById("carno").value);
+			if(carnum<1 || carnum>5){
+				alert("Please Enter a Number From 1-5");
+				document.getElementById("carno").value=3;
+				carnum=3;
+			}
+		}
+		function playaname(){
+			charname=document.getElementById("playername").value;
+			charname.trim();
+		}
+		function redchar(){
+			s.style.backgroundImage = "url('red.png')";
+		}
+		function whitechar(){
+			s.style.backgroundImage = "url('white.png')";
+		}
+		function graychar(){
+			s.style.backgroundImage = "url('gray.png')";
+		}
+		function orangechar(){
+			s.style.backgroundImage = "url('orange.png')";
+		}
+		function blackchar(){
+			s.style.backgroundImage = "url('black.png')";
+		}
+		function borders(){
+			if(document.getElementById("borde").value=="on"){
+				for(ctr=1;ctr<=carnum;ctr++){
+					carr[ctr].style.border="1px solid red";
+					for(ctr1=carnum+1;ctr1<=5;ctr1++){
+						carr[ctr1].style.border="1px solid red";
+					}
+				}
+				s.style.border = "1px solid red";
+			}
+			else{
+				for(ctr=1;ctr<=carnum;ctr++){
+					carr[ctr].style.border="none";
+					for(ctr1=carnum+1;ctr1<=5;ctr1++){
+						carr[ctr1].style.border="none";
+					}
+				}
+				s.style.border = "none";
+			}
+		}
+		function mainmenu(){
+			gameover=0;
+			document.getElementById("boxback").style.border = "15px solid white";
+			document.getElementById("box1").style.zIndex="3";
+			document.getElementById("gameoverbox").style.zIndex="-1";
+		}
+		function showCoords(event){
+			if(startclick==1){
+				s.style.left=(event.clientX-b.getBoundingClientRect().left-(s.clientWidth/2)) + "px";
+				s.style.top=(event.clientY-b.getBoundingClientRect().top-(s.clientHeight/2)) + "px";
+				comparex=Math.round((event.clientX-b.getBoundingClientRect().left-(s.clientWidth/2)));
+				comparey=Math.round((event.clientY-b.getBoundingClientRect().top-(s.clientHeight/2)));
+				line1cords= event.clientY-b.getBoundingClientRect().top-(layn1.clientHeight/2);
+				if(comparex<0){
+						s.style.left="0px";
+						comparex=0;
+				}
+				else if(comparex>b.clientWidth-s.clientWidth){
+					s.style.left=b.clientWidth-s.clientWidth + "px";
+					comparex=b.clientWidth-s.clientWidth;
+				}
+				else{}
+				if(comparey<0){
+					s.style.top="0px";
+					comparey=0;
+				}
+				else if(comparey>b.clientHeight-s.clientHeight){
+					s.style.top=b.clientHeight-s.clientHeight + "px";
+					comparey=b.clientHeight-s.clientHeight;
+				}
+				else{}
+			}
+		}
+		function frame(){
+			if(startclick==1){
+				document.getElementById("boxback").style.border = "15px solid white";
+				highscorecheck=1;
+				for(ctr=1;ctr<=carnum;ctr++){
+					carr[ctr].style.zIndex="1";
+					for(ctr1=carnum+1;ctr1<=5;ctr1++){
+						carr[ctr1].style.zIndex="-1";
+					}
+				}
+				for(ctr=1;ctr<=3;ctr++){
+					layny[ctr]= layny[ctr] + numy; 
+					layn[ctr].style.top = layny[ctr] + "px"; 
+					if(layny[ctr]>b.clientHeight){
+						layny[ctr]=-150;
+					}
+				}
+				for(ctr=1;ctr<=carnum;ctr++){
+					cary[ctr]= cary[ctr] + numy; 
+					carr[ctr].style.top = cary[ctr] + "px"; 
+					if(cary[ctr]>b.clientHeight){
+						randomnum[ctr]=Math.floor(Math.random() * (b.clientWidth-carr1.clientWidth)) + 1;
+						carr[ctr].style.left = randomnum[ctr] + "px"; 
+						cary[ctr]=-carr1.clientHeight;
+						score+=10;
+						document.getElementById("scoreboard").innerHTML="Score: "+score; 
+						if(score%100==0){
+							numy+=0.1;
+						}
+					}				
+				}
+				//bottom
+				for(ctr=1;ctr<=carnum;ctr++){
+					if(comparex>=(randomnum[ctr]-s.clientWidth)+5 && comparex<=(randomnum[ctr]+carr[ctr].clientWidth)-8){
+						if(comparey>=(cary[ctr]+carr[ctr].clientHeight)-1 && comparey<=(cary[ctr]+carr[ctr].clientHeight)+1){
+							startclick=0;
+							gameover=1;
+						}
+				}
+				}
+				//top
+				for(ctr=1;ctr<=carnum;ctr++){
+					if(comparex>=(randomnum[ctr]-s.clientWidth)+5 && comparex<=(randomnum[ctr]+carr[ctr].clientWidth)-8){
+						if(comparey>=(cary[ctr]-carr[ctr].clientHeight)-1 && comparey<=cary[ctr]+1){
+							startclick=0;
+							gameover=1;
+						}
+				}
+				}
+				//left
+				for(ctr=1;ctr<=carnum;ctr++){
+					if(comparex+s.clientWidth>=randomnum[ctr] && comparex+s.clientWidth<=randomnum[ctr]+carr[ctr].clientWidth){
+						if(comparey>=(cary[ctr]-carr[ctr].clientHeight) && comparey<=(cary[ctr]+carr[ctr].clientHeight)+4){
+							startclick=0;
+							gameover=1;
+						}
+				}
+				}
+				//right
+				for(ctr=1;ctr<=carnum;ctr++){
+					if(comparex>=(randomnum[ctr]+carr[ctr].clientWidth)-carr[ctr].clientWidth && comparex<=(randomnum[ctr]+carr[ctr].clientWidth)){
+						if(comparey>=(cary[ctr]-carr[ctr].clientHeight) && comparey<=(cary[ctr]+carr[ctr].clientHeight)+1){
+							startclick=0;
+							gameover=1;
+						}
+				}
+				}
+			}
+			if(gameover==1){
+				document.getElementById("boxback").style.border = "15px solid #f8394a";
+				document.getElementById("gameoverbox").style.zIndex="1";
+				if(highscorecheck==1){
+					highscorecheck=0;
+					if(charname==""){
+						charname="Player Name"
+					}
+					if(score>=highscore[0]){
+						highscore[0]=score;
+						highscore[1]=charname;
+						document.getElementById("highscores").innerHTML=highscore[1]+": "+highscore[0]; 
+					}
+				}
+				document.getElementById("scoretext").innerHTML=charname + "'s Score: "+score; 
+			}
+			else{
+				document.getElementById("gameoverbox").style.zIndex="-1";
+			}
+		}
+		</script>
+		<footer>
+			<h3 style="text-align: center; color: white; font: 1em DIN Next W01 Regular,Trebuchet MS,Helvetica,Arial,sans-serif;"> &copy Copyright 2019 |  All Rights Reserved</h3>
+		</footer>
+	</body>
+</html>
