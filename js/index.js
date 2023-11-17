@@ -1,5 +1,4 @@
 // Insert your JS code here
-
 console.log("Log entry.");
 
 /**
@@ -14,3 +13,5 @@ console.log("Log entry.");
  * The test will begin on the word start. On your mark, get ready, start. 
  * 
  * */
+=======
+console.log("Log entry.");
